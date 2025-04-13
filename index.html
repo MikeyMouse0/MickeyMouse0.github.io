@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeBot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MemeBot</h1>
+        <div class="tabs">
+            <button onclick="showTab('upload')">Загрузить мем</button>
+            <button onclick="showTab('all')">Все мемы</button>
+            <button onclick="showTab('settings')">Настройки</button>
+            <button id="moderationTab" style="display: none;" onclick="showTab('moderation')">Модерация</button>
+        </div>
+
+        <div id="notification" class="notification"></div>
+
+        <!-- Вкладка загрузки мема -->
+        <div id="upload" class="tab-content">
+            <h2>Загрузить мем</h2>
+            <form id="memeForm">
+                <input type="text" id="title" placeholder="Название мема" maxlength="100" required>
+                <textarea id="description" placeholder="Описание (макс. 1000 символов)" maxlength="1000"></textarea>
+                <input type="text" id="tag" placeholder="Тег (макс. 50 символов)" maxlength="50">
+                <label><input type="checkbox" id="isAdult"> 18+</label>
+                <input type="file" id="media" accept="image/jpeg,image/png,image/gif,video/mp4">
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+
+        <!-- Вкладка всех мемов -->
+        <div id="all" class="tab-content">
+            <h2>Все мемы</h2>
+            <div id="memeList"></div>
+            <button id="loadMore" onclick="loadMoreMemes()">Загрузить еще</button>
+        </div>
+
+        <!-- Вкладка настроек -->
+        <div id="settings" class="tab-content">
+            <h2>Настройки</h2>
+            <label><input type="checkbox" id="darkTheme"> Темная тема</label>
+        </div>
+
+        <!-- Вкладка модерации -->
+        <div id="moderation" class="tab-content">
+            <h2>Модерация</h2>
+            <div id="moderationList"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
